@@ -79,6 +79,22 @@
       margin-left: auto;
       margin-right: auto;
     }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: 10px auto 20px auto;
+      text-align: left;
+    }
+    li {
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 12px;
+      margin: 6px 0;
+      padding: 10px 14px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
     a { color: #D4AF37; text-decoration: none; }
     a:hover { text-decoration: underline; }
   </style>
@@ -87,7 +103,17 @@
 <body>
   <img src="https://cdn.shopify.com/s/files/1/0972/5398/2543/files/logo_ritagliato.png?v=1761577845" alt="LuckyExperience" style="width:120px;margin-bottom:10px;">
   <h1>🎯 LuckyExperience – Premi immediati per il tuo soggiorno</h1>
-  <p>Effettua il pagamento PayPal e gira la ruota una volta per scoprire il tuo premio garantito!</p>
+  <p>Effettua il pagamento PayPal e gira la ruota una sola volta per scoprire il tuo premio garantito!</p>
+
+  <h2 style="margin-top:25px;">🎁 Premi in palio</h2>
+  <ul>
+    <li>🍹 <strong>Aperitivo di benvenuto</strong></li>
+    <li>🎫 <strong>20% di sconto su una prenotazione futura</strong></li>
+    <li>🥂 <strong>Bottiglia Prosecco Big + Stuzzicheria</strong></li>
+    <li>🍷 <strong>Bottiglia di Vino (rosso o bianco)</strong></li>
+    <li>🕒 <strong>Late Check-out +1h</strong></li>
+    <li>☕ <strong>Colazione al Bar Paolo</strong></li>
+  </ul>
 
   <div id="pointer"></div>
   <div class="wheel-container">
@@ -107,7 +133,7 @@
 
   <div class="legal">
     <p>LuckyExperience è un servizio indipendente proposto in collaborazione con strutture partner.</p>
-    <p>Ogni partecipante ottiene sempre un premio garantito; non è gioco d’azzardo (D.P.R. 430/2001).</p>
+    <p>Partecipazione facoltativa – contributo simbolico 5 €. Ogni partecipante ottiene sempre un premio garantito; non è gioco d’azzardo (D.P.R. 430/2001).</p>
     <p>📧 <a href="mailto:luckyexperienceinfoexperience@gmail.com">luckyexperienceinfoexperience@gmail.com</a></p>
   </div>
 
@@ -144,7 +170,6 @@
       { text: "☕ Colazione al Bar Paolo", weight: 6 }
     ];
 
-    // Disegno ruota con emoji uguale su tutti gli spicchi
     function drawWheel() {
       const total = prizes.length;
       const arc = (2 * Math.PI) / total;
@@ -161,7 +186,7 @@
         ctx.textAlign = "right";
         ctx.fillStyle = "#D4AF37";
         ctx.font = "bold 24px Poppins";
-        ctx.fillText("🎫", center - 20, 10);  /* cambia in "🎁" se preferisci */
+        ctx.fillText("🎫", center - 20, 10);
         ctx.restore();
       });
     }
