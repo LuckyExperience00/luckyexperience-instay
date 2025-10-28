@@ -1,0 +1,41 @@
+:root{
+  --gold:#D4AF37;
+  --gold-soft:rgba(212,175,55,0.3);
+  --text:#D4AF37;
+  --bg:#000;
+  --muted:#bbb;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Segoe UI Emoji,Arial,sans-serif}
+.container{max-width:900px;margin:0 auto;padding:40px 20px;text-align:center;line-height:1.8}
+.brand{width:120px;height:auto;margin-bottom:20px}
+h1{font-size:32px;margin:10px 0 12px 0}
+.lead{max-width:720px;margin:0 auto 22px auto}
+.btn-primary,.btn-secondary{
+  display:inline-block;border:none;border-radius:40px;padding:14px 24px;
+  font-weight:700;text-decoration:none;cursor:pointer;
+  box-shadow:0 0 18px rgba(212,175,55,.45);
+}
+.btn-primary{background:var(--gold);color:#000}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid var(--gold)}
+.btn-secondary:hover{background:rgba(212,175,55,.1)}
+
+.result{margin-top:26px}
+.hidden{display:none}
+.prize{font-size:22px;font-weight:700;margin:6px 0}
+.desc{max-width:700px;margin:0 auto 14px auto;color:var(--white)}
+.voucher{
+  margin:20px auto 8px auto;max-width:520px;padding:16px;border:1px solid var(--gold-soft);
+  border-radius:14px;background:rgba(255,255,255,.02)
+}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:800;font-size:22px;letter-spacing:1px;margin:6px 0 10px 0}
+.qr{width:220px;height:220px;object-fit:contain;margin:6px 0 14px 0;background:#111;border-radius:12px;padding:8px;border:1px solid var(--gold-soft)}
+.review-nudge{max-width:680px;margin:12px auto 0 auto}
+.legal{
+  margin-top:36px;padding-top:16px;border-top:1px solid var(--gold-soft);
+  font-size:12px;color:var(--muted);
+}
+.legal a{color:var(--white);text-decoration:none}
+.legal a:hover{text-decoration:underline}
