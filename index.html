@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LuckyExperience – Premium Spin (In Soggiorno)</title>
   <meta name="description" content="Gira la ruota LuckyExperience e vivi subito il tuo premio durante il soggiorno. Premi garantiti, pagamento sicuro PayPal.">
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       background-color: #000;
@@ -50,6 +49,7 @@
       cursor: pointer;
       font-size: 18px;
       box-shadow: 0 0 20px rgba(212,175,55,0.6);
+      margin-top: 10px;
     }
     .btn:disabled {
       opacity: 0.5;
@@ -79,14 +79,15 @@
       margin-left: auto;
       margin-right: auto;
     }
-    a { color: #D4AF37; }
+    a { color: #D4AF37; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 
 <body>
   <img src="https://cdn.shopify.com/s/files/1/0972/5398/2543/files/logo_ritagliato.png?v=1761577845" alt="LuckyExperience" style="width:120px;margin-bottom:10px;">
   <h1>🎯 LuckyExperience – Premi immediati per il tuo soggiorno</h1>
-  <p>Effettua il pagamento e gira la ruota una volta per scoprire il tuo premio garantito!</p>
+  <p>Effettua il pagamento PayPal e gira la ruota una volta per scoprire il tuo premio garantito!</p>
 
   <div id="pointer"></div>
   <div class="wheel-container">
@@ -94,7 +95,6 @@
   </div>
 
   <div id="paypal-container"></div>
-
   <button id="spinBtn" class="btn" disabled>🎡 Gira la Ruota</button>
 
   <div id="resultBox" class="result-box">
@@ -111,12 +111,11 @@
     <p>📧 <a href="mailto:luckyexperienceinfoexperience@gmail.com">luckyexperienceinfoexperience@gmail.com</a></p>
   </div>
 
-  <!-- PayPal -->
+  <!-- PAYPAL -->
   <script 
     src="https://www.paypal.com/sdk/js?client-id=BAAN6bRif0SiRgIVogFIdoXGcyTo8yCOdtp86-1BFsjPk9efx1Hid7QRfndhe3Oyv24vh_BQcCnnk1fsIY&components=hosted-buttons&disable-funding=venmo&currency=EUR">
   </script>
   <script>
-    // Inizializza PayPal solo se non è già stato pagato
     const params = new URLSearchParams(window.location.search);
     const paid = params.get("paid") === "true";
 
@@ -136,15 +135,15 @@
     const center = size / 2;
 
     const prizes = [
-      { text: "🍹 Aperitivo di benvenuto", weight: 35 },
-      { text: "🎫 Sconto 20% prenotazione futura", weight: 30 },
-      { text: "🥂 Prosecco Big + Stuzzicheria", weight: 12 },
-      { text: "🍷 Bottiglia di Vino (r/b)", weight: 10 },
-      { text: "🕒 Late check-out +1h", weight: 7 },
-      { text: "☕ Colazione al Bar Paolo", weight: 6 }
+      { short: "A", text: "🍹 Aperitivo di benvenuto", weight: 35 },
+      { short: "S20", text: "🎫 Sconto 20% prenotazione futura", weight: 30 },
+      { short: "P", text: "🥂 Prosecco Big + Stuzzicheria", weight: 12 },
+      { short: "V", text: "🍷 Bottiglia di Vino (r/b)", weight: 10 },
+      { short: "L", text: "🕒 Late check-out +1h", weight: 7 },
+      { short: "C", text: "☕ Colazione al Bar Paolo", weight: 6 }
     ];
 
-    // Disegno ruota
+    // Disegno ruota con sigle brevi
     function drawWheel() {
       const total = prizes.length;
       const arc = (2 * Math.PI) / total;
@@ -160,8 +159,8 @@
         ctx.rotate(start + arc / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#D4AF37";
-        ctx.font = "bold 14px Poppins";
-        ctx.fillText(p.text, center - 10, 5);
+        ctx.font = "bold 16px Poppins";
+        ctx.fillText(p.short, center - 15, 5);
         ctx.restore();
       });
     }
@@ -186,8 +185,7 @@
       }
 
       const degreesPerSegment = 360 / prizes.length;
-      const targetRotation = (360 * 5) + (360 - (chosenIndex * degreesPerSegment) - degreesPerSegment / 2);
-      let current = 0;
+      const targetRotation = (360 * 6) + (360 - (chosenIndex * degreesPerSegment) - degreesPerSegment / 2);
       const duration = 6000;
       const start = performance.now();
 
