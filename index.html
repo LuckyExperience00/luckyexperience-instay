@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuckyExperience – Premium Spin (In Soggiorno)</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Gira la ruota LuckyExperience e vivi subito il tuo premio durante il soggiorno. Spin bilingue IT/EN. Premio garantito.">
+</head>
+<body>
+  <main class="container">
+    <img class="brand" src="https://cdn.shopify.com/s/files/1/0972/5398/2543/files/logo_ritagliato.png?v=1761577845" alt="LuckyExperience" />
+    <h1 data-i18n="title">🎯 LuckyExperience – Premi immediati per il tuo soggiorno</h1>
+    <p class="lead" data-i18n="subtitle">
+      Sei nostro ospite? Gira la ruota e scopri il tuo premio garantito da utilizzare durante il soggiorno.
+    </p>
+
+    <!-- Se hai la ruota grafica, collegala qui e chiama handleWin() al termine dell’animazione -->
+    <button id="spinBtn" class="btn-primary" data-i18n="spinCta">🎡 Gira la Ruota</button>
+
+    <div id="result" class="result hidden">
+      <h2 data-i18n="youWon">Hai vinto:</h2>
+      <p id="prizeTitle" class="prize"></p>
+      <p id="prizeDesc" class="desc"></p>
+
+      <div class="voucher">
+        <h3 data-i18n="voucherTitle">🎟️ Il tuo Voucher</h3>
+        <p data-i18n="voucherNote">Mostra questo voucher in reception per riscattare il premio.</p>
+        <div id="voucherCode" class="code"></div>
+        <img id="voucherQR" class="qr" alt="Voucher QR" />
+        <a id="openVoucher" class="btn-secondary" target="_blank" rel="noopener">🔗 Apri il voucher</a>
+      </div>
+
+      <div class="review-nudge">
+        <h3 data-i18n="reviewTitle">Ti è piaciuto il soggiorno?</h3>
+        <p data-i18n="reviewText">
+          Racconta la tua esperienza sul portale da cui hai prenotato, su Google o TripAdvisor. Grazie!
+        </p>
+      </div>
+    </div>
+
+    <section class="legal">
+      <p data-i18n="legalLine1">
+        LuckyExperience è un servizio indipendente proposto in collaborazione con strutture partner.
+      </p>
+      <p data-i18n="legalLine2">
+        Ogni partecipante ottiene sempre un premio garantito; non è gioco d’azzardo (D.P.R. 430/2001).
+      </p>
+      <p>
+        📧 <a href="mailto:luckyexperienceinfoexperience@gmail.com">luckyexperienceinfoexperience@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
