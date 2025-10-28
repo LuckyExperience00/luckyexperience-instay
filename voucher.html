@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Voucher – LuckyExperience</title>
+  <link rel="stylesheet" href="style.css"/>
+  <meta name="description" content="Voucher LuckyExperience da mostrare in reception. Con invito a lasciare una recensione.">
+  <style>
+    .voucher-page{max-width:880px;margin:0 auto;padding:32px 20px;text-align:center}
+    .card{border:1px solid rgba(212,175,55,.3);border-radius:16px;padding:18px;background:rgba(255,255,255,.02)}
+    .row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .col{flex:1 1 280px;min-width:260px}
+    .big{font-size:26px;font-weight:800;margin:6px 0}
+    .sub{color:#fff;margin:0 auto;max-width:640px}
+    .pill{display:inline-block;font-size:12px;padding:4px 10px;border:1px solid rgba(212,175,55,.3);border-radius:999px;margin-top:6px}
+    .links a{display:inline-block;margin:6px 8px 0 8px}
+  </style>
+</head>
+<body>
+  <div class="voucher-page">
+    <img class="brand" src="https://cdn.shopify.com/s/files/1/0972/5398/2543/files/logo_ritagliato.png?v=1761577845" alt="LuckyExperience" />
+    <h1 id="title">🎟️ Voucher LuckyExperience</h1>
+
+    <div class="card">
+      <div class="row">
+        <div class="col">
+          <div class="pill" id="prizeId">ID</div>
+          <div class="big" id="prizeTitle">Premio</div>
+          <p class="sub" id="prizeDesc">Descrizione</p>
+          <div class="code" id="code">LX-XXXXXX</div>
+          <p class="sub" id="note"></p>
+        </div>
+        <div class="col">
+          <img id="qr" class="qr" alt="QR"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-nudge">
+      <h2 id="reviewTitle">Ti è piaciuto il soggiorno?</h2>
+      <p id="reviewText" class="sub">
+        Racconta la tua esperienza sul portale da cui hai prenotato, su Google o TripAdvisor. Grazie!
+      </p>
+      <div class="links">
+        <!-- INSERISCI QUI i tuoi link reali -->
+        <a class="btn-secondary" id="googleBtn" href="#" target="_blank" rel="noopener">⭐ Google</a>
+        <a class="btn-secondary" id="taBtn" href="#" target="_blank" rel="noopener">🧭 TripAdvisor</a>
+        <a class="btn-secondary" id="portalBtn" href="#" target="_blank" rel="noopener">🏨 Portale di prenotazione</a>
+      </div>
+    </div>
+
+    <section class="legal">
+      <p id="legal1">LuckyExperience è un servizio indipendente proposto in collaborazione con strutture partner.</p>
+      <p id="legal2">Ogni partecipante ottiene sempre un premio garantito; non è gioco d’azzardo (D.P.R. 430/2001).</p>
+      <p>📧 <a href="mailto:luckyexperienceinfoexperience@gmail.com">luckyexperienceinfoexperience@gmail.com</a></p>
+    </section>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const lang = (params.get("lang") || "").toLowerCase().startsWith("it") ? "it" : "en";
+    const prize = params.get("prize") || "";
+    const code = params.get("code") || "LX-XXXXXX";
+
+    const map = {
+      it: {
+        title: "🎟️ Voucher LuckyExperience",
+        note: "Mostra questo voucher in reception per riscattare il premio.",
+        reviewTitle: "Ti è piaciuto il soggiorno?",
+        reviewText: "Racconta la tua esperienza sul portale da cui hai prenotato, su Google o TripAdvisor. Grazie!",
+        legal1: "LuckyExperience è un servizio indipendente proposto in collaborazione con strutture partner.",
+        legal2: "Ogni partecipante ottiene sempre un premio garantito; non è gioco d’azzardo (D.P.R. 430/2001).",
+        prizes: {
+          aperitivo: { title:"Aperitivo di benvenuto", desc:"Un brindisi di benvenuto per iniziare al meglio il tuo soggiorno." },
+          sconto20: { title:"Sconto 20% prenotazione futura", desc:"Valido su sosta o pernottamento per il tuo prossimo ritorno." },
+          proseccoBig: { title:"Bottiglia Prosecco Big + Stuzzicheria", desc:"Un momento speciale in camera con selezione di stuzzicherie." },
+          vino: { title:"Bottiglia di Vino (rosso/bianco)", desc:"Una bottiglia di vino a scelta (rosso o bianco)." },
+          late1h: { title:"Late check-out +1h", desc:"Parti con calma: un’ora extra, salvo disponibilità." },
+          colazionePaolo: { title:"Colazione al Bar Paolo", desc:"Colazione omaggio presso il Bar Paolo convenzionato." }
+        },
+        google: "⭐ Google",
+        ta: "🧭 TripAdvisor",
+        portal: "🏨 Portale di prenotazione"
+      },
+      en: {
+        title: "🎟️ LuckyExperience Voucher",
+        note: "Show this voucher at reception to redeem your perk.",
+        reviewTitle: "Enjoyed your stay?",
+        reviewText: "Share your experience on your booking portal, Google or TripAdvisor. Thank you!",
+        legal1: "LuckyExperience is an independent service offered in collaboration with partner properties.",
+        legal2: "Every participant gets a guaranteed perk; this is not gambling (D.P.R. 430/2001).",
+        prizes: {
+          aperitivo: { title:"Welcome Aperitif", desc:"A welcome toast to kickstart your stay." },
+          sconto20: { title:"20% Off on a future booking", desc:"Valid on parking or overnight for your next visit." },
+          proseccoBig: { title:"Large Prosecco Bottle + Snacks", desc:"A special in-room moment with a selection of snacks." },
+          vino: { title:"Bottle of Wine (red/white)", desc:"One bottle of wine of your choice (red or white)." },
+          late1h: { title:"Late check-out +1h", desc:"Leave with no rush: one extra hour, subject to availability." },
+          colazionePaolo: { title:"Breakfast at Bar Paolo", desc:"Complimentary breakfast at our partner Bar Paolo." }
+        },
+        google: "⭐ Google",
+        ta: "🧭 TripAdvisor",
+        portal: "🏨 Booking Portal"
+      }
+    };
+
+    const dict = map[lang];
+    document.getElementById("title").textContent = dict.title;
+    document.getElementById("note").textContent = dict.note;
+    document.getElementById("reviewTitle").textContent = dict.reviewTitle;
+    document.getElementById("reviewText").textContent = dict.reviewText;
+    document.getElementById("legal1").textContent = dict.legal1;
+    document.getElementById("legal2").textContent = dict.legal2;
+
+    const p = dict.prizes[prize] || { title:"Premio", desc:"" };
+    document.getElementById("prizeId").textContent = prize || "ID";
+    document.getElementById("prizeTitle").textContent = p.title;
+    document.getElementById("prizeDesc").textContent = p.desc;
+    document.getElementById("code").textContent = code;
+
+    // QR di questa pagina (utile allo staff)
+    const currentUrl = location.href;
+    document.getElementById("qr").src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=" + encodeURIComponent(currentUrl);
+
+    // 👉 Sostituisci con i link veri della tua struttura
+    document.getElementById("googleBtn").href = "#";      // es: https://g.page/r/TUO-LINK/review
+    document.getElementById("taBtn").href = "#";          // es: https://www.tripadvisor.it/Hotel_Review-...
+    document.getElementById("portalBtn").href = "#";      // es: URL del portale usato dall'ospite
+  </script>
+</body>
+</html>
