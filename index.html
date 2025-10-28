@@ -134,16 +134,17 @@
     const size = canvas.width;
     const center = size / 2;
 
+    // Premi e pesi
     const prizes = [
-      { short: "A", text: "🍹 Aperitivo di benvenuto", weight: 35 },
-      { short: "S20", text: "🎫 Sconto 20% prenotazione futura", weight: 30 },
-      { short: "P", text: "🥂 Prosecco Big + Stuzzicheria", weight: 12 },
-      { short: "V", text: "🍷 Bottiglia di Vino (r/b)", weight: 10 },
-      { short: "L", text: "🕒 Late check-out +1h", weight: 7 },
-      { short: "C", text: "☕ Colazione al Bar Paolo", weight: 6 }
+      { text: "🍹 Aperitivo di benvenuto", weight: 35 },
+      { text: "🎫 Sconto 20% prenotazione futura", weight: 30 },
+      { text: "🥂 Prosecco Big + Stuzzicheria", weight: 12 },
+      { text: "🍷 Bottiglia di Vino (r/b)", weight: 10 },
+      { text: "🕒 Late check-out +1h", weight: 7 },
+      { text: "☕ Colazione al Bar Paolo", weight: 6 }
     ];
 
-    // Disegno ruota con sigle brevi
+    // Disegno ruota con emoji uguale su tutti gli spicchi
     function drawWheel() {
       const total = prizes.length;
       const arc = (2 * Math.PI) / total;
@@ -159,8 +160,8 @@
         ctx.rotate(start + arc / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#D4AF37";
-        ctx.font = "bold 16px Poppins";
-        ctx.fillText(p.short, center - 15, 5);
+        ctx.font = "bold 24px Poppins";
+        ctx.fillText("🎫", center - 20, 10);  /* cambia in "🎁" se preferisci */
         ctx.restore();
       });
     }
